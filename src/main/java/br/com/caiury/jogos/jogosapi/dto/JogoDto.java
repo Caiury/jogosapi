@@ -1,103 +1,109 @@
-package br.com.caiury.jogos.jogosapi.entity;
+package br.com.caiury.jogos.jogosapi.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
+import br.com.caiury.jogos.jogosapi.entity.Jogo;
 import br.com.caiury.jogos.jogosapi.enums.Plataforma;
 
-@Entity
-public class Jogo {
+public class JogoDto {
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(nullable = false)
+
 	private String titulo;
-	
-	@Column(nullable = false)
+
 	private String estudio;
-	
-	@Column(nullable = false)
-	@Enumerated(EnumType.STRING)
+
 	private Plataforma plataforma;
-	
-	@Column(nullable = false)
+
 	private BigDecimal preco;
+
+	private LocalDate horaCriacao;
 	
-	private LocalDate horaCriacao = LocalDate.now();
-	
-	public Jogo () {
+	public JogoDto() {
 		
 	}
 	
-	
-
-	public Jogo(Long id, String titulo, String estudio, Plataforma plataforma, BigDecimal preco,
-			LocalDate horaCriacao) {
-		this.id = id;
-		this.titulo = titulo;
-		this.estudio = estudio;
-		this.plataforma = plataforma;
-		this.preco = preco;
-		this.horaCriacao = horaCriacao;
+	public JogoDto(Jogo jogo) {
+		this.id= jogo.getId();
+		this.titulo= jogo.getTitulo();
+		this.estudio= jogo.getEstudio();
+		this.plataforma = jogo.getPlataforma();
+		this.preco= jogo.getPreco();
+		
 	}
-
 
 
 	public Long getId() {
 		return id;
 	}
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 
 	public String getTitulo() {
 		return titulo;
 	}
 
+
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+
 
 	public String getEstudio() {
 		return estudio;
 	}
 
+
 	public void setEstudio(String estudio) {
 		this.estudio = estudio;
 	}
+
 
 	public Plataforma getPlataforma() {
 		return plataforma;
 	}
 
+
 	public void setPlataforma(Plataforma plataforma) {
 		this.plataforma = plataforma;
 	}
+
 
 	public BigDecimal getPreco() {
 		return preco;
 	}
 
+
 	public void setPreco(BigDecimal preco) {
 		this.preco = preco;
 	}
+
 
 	public LocalDate getHoraCriacao() {
 		return horaCriacao;
 	}
 
+
 	public void setHoraCriacao(LocalDate horaCriacao) {
 		this.horaCriacao = horaCriacao;
 	}
+
+
+	public Jogo converter() {
+		
+		return new Jogo(id, titulo, estudio, plataforma, preco, horaCriacao);
+	}
+	
+	
+	
 
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.caiury.jogos.jogosapi.dto.JogoDto;
 import br.com.caiury.jogos.jogosapi.entity.Jogo;
 import br.com.caiury.jogos.jogosapi.service.JogoService;
 
@@ -21,7 +22,7 @@ public class JogoController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public void cadastrarJogo (@RequestBody Jogo jogo) {
-		jogoService.cadastrar(jogo);
+	public void cadastrarJogo (@RequestBody JogoDto jogoDto) {
+		jogoService.cadastrar(jogoDto);
 	}
 }
