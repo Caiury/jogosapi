@@ -26,12 +26,20 @@ public class JogoService {
 		List<Jogo> jogos = jogoRepository.findAll();
 		return JogoDto.converterTodos(jogos);
 	}
-	
-	
 
 	public JogoDto listarPorId(Long id) {
 		Jogo jogo = jogoRepository.getById(id);
 		return new JogoDto(jogo);
+	}
+
+	public void atualizar(JogoDto jogoDto, Long id) {
+
+		Jogo jogo = jogoRepository.getById(id);
+
+		jogo = jogoDto.atualizar(jogo);
+		
+		jogoRepository.save(jogo);
+
 	}
 
 }

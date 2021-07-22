@@ -113,6 +113,14 @@ public class JogoDto {
 		return jogos.stream().map(JogoDto::new).collect(Collectors.toList());
 	}
 
+	public Jogo atualizar(Jogo jogo) {
+		jogo.setTitulo(titulo);
+		jogo.setEstudio(estudio);
+		jogo.setPlataforma(plataforma);
+		jogo.setPreco(preco);
+		return jogo;
+	}
+
 
 	
 	
