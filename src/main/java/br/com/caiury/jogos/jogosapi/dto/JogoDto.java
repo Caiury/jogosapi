@@ -3,6 +3,7 @@ package br.com.caiury.jogos.jogosapi.dto;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import javax.persistence.Column;
@@ -39,6 +40,8 @@ public class JogoDto {
 		this.horaCriacao = jogo.getHoraCriacao();
 	}
 
+
+	
 
 	public Long getId() {
 		return id;

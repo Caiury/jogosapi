@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,21 +22,24 @@ public class JogoController {
 
 	@Autowired
 	JogoService jogoService;
-	
-	
+
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public void cadastrarJogo (@RequestBody JogoDto jogoDto) {
+	public void cadastrarJogo(@RequestBody JogoDto jogoDto) {
 		jogoService.cadastrar(jogoDto);
 	}
-	
+
 	
 	@GetMapping
-	public List<JogoDto>listarTodosJogos(){
+	public List<JogoDto> listarTodosJogos() {
+
+		return jogoService.listarTodos();
+
+	}
 	
-		return  jogoService.listarTodos();
+	@GetMapping("/{id}")
+	public JogoDto listaPorId(@PathVariable Long id) {
 		
-		
-		
+		return jogoService.listarPorId(id);
 	}
 }
