@@ -2,6 +2,7 @@ package br.com.caiury.jogos.jogosapi.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -25,7 +26,7 @@ public class JogoDto {
 
 	private BigDecimal preco;
 
-	private LocalDate horaCriacao;
+	private LocalDateTime horaCriacao;
 	
 	public JogoDto() {
 		
@@ -93,19 +94,19 @@ public class JogoDto {
 	}
 
 
-	public LocalDate getHoraCriacao() {
+	public LocalDateTime getHoraCriacao() {
 		return horaCriacao;
 	}
 
 
-	public void setHoraCriacao(LocalDate horaCriacao) {
+	public void setHoraCriacao(LocalDateTime horaCriacao) {
 		this.horaCriacao = horaCriacao;
 	}
 
 
 	public Jogo converter() {
 		
-		return new Jogo(id, titulo, estudio, plataforma, preco, horaCriacao);
+		return new Jogo(id, titulo, estudio, plataforma, preco);
 	}
 
 	public static List<JogoDto> converterTodos(List<Jogo> jogos) {

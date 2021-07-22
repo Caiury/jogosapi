@@ -2,6 +2,7 @@ package br.com.caiury.jogos.jogosapi.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,7 +33,7 @@ public class Jogo {
 	@Column(nullable = false)
 	private BigDecimal preco;
 	
-	private LocalDate horaCriacao = LocalDate.now();
+	private LocalDateTime horaCriacao = LocalDateTime.now();
 	
 	public Jogo () {
 		
@@ -40,14 +41,13 @@ public class Jogo {
 	
 	
 
-	public Jogo(Long id, String titulo, String estudio, Plataforma plataforma, BigDecimal preco,
-			LocalDate horaCriacao) {
+	public Jogo(Long id, String titulo, String estudio, Plataforma plataforma, BigDecimal preco) {
 		this.id = id;
 		this.titulo = titulo;
 		this.estudio = estudio;
 		this.plataforma = plataforma;
 		this.preco = preco;
-		this.horaCriacao = horaCriacao;
+		
 	}
 
 
@@ -92,11 +92,11 @@ public class Jogo {
 		this.preco = preco;
 	}
 
-	public LocalDate getHoraCriacao() {
+	public LocalDateTime getHoraCriacao() {
 		return horaCriacao;
 	}
 
-	public void setHoraCriacao(LocalDate horaCriacao) {
+	public void setHoraCriacao(LocalDateTime horaCriacao) {
 		this.horaCriacao = horaCriacao;
 	}
 

@@ -37,8 +37,16 @@ public class JogoService {
 		Jogo jogo = jogoRepository.getById(id);
 
 		jogo = jogoDto.atualizar(jogo);
-		
+
 		jogoRepository.save(jogo);
+
+	}
+
+	public void deletar(Long id) {
+
+		Jogo jogo = jogoRepository.getById(id);
+
+		jogoRepository.delete(jogo);
 
 	}
 
