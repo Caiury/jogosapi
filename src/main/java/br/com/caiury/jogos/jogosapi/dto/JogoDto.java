@@ -2,6 +2,8 @@ package br.com.caiury.jogos.jogosapi.dto;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.EnumType;
@@ -34,7 +36,7 @@ public class JogoDto {
 		this.estudio= jogo.getEstudio();
 		this.plataforma = jogo.getPlataforma();
 		this.preco= jogo.getPreco();
-		
+		this.horaCriacao = jogo.getHoraCriacao();
 	}
 
 
@@ -102,7 +104,13 @@ public class JogoDto {
 		
 		return new Jogo(id, titulo, estudio, plataforma, preco, horaCriacao);
 	}
-	
+
+	public static List<JogoDto> converterTodos(List<Jogo> jogos) {
+		
+		return jogos.stream().map(JogoDto::new).collect(Collectors.toList());
+	}
+
+
 	
 	
 
