@@ -2,6 +2,8 @@ package br.com.caiury.jogos.jogosapi.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +30,7 @@ public class JogoController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public void cadastrarJogo(@RequestBody JogoDto jogoDto) {
+	public void cadastrarJogo(@RequestBody @Valid JogoDto jogoDto) {
 		jogoService.cadastrar(jogoDto);
 	}
 
@@ -47,7 +49,7 @@ public class JogoController {
 
 	@PutMapping("/{id}")
 	@Transactional
-	public void atualizar(@RequestBody JogoDto jogoDto,@PathVariable Long id) {
+	public void atualizar(@RequestBody @Valid JogoDto jogoDto,@PathVariable Long id) {
 		
 		jogoService.atualizar(jogoDto, id);
 	}

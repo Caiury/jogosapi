@@ -10,6 +10,12 @@ import java.util.stream.Collectors;
 import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
 
 import br.com.caiury.jogos.jogosapi.entity.Jogo;
 import br.com.caiury.jogos.jogosapi.enums.Plataforma;
@@ -18,12 +24,16 @@ public class JogoDto {
 
 	private Long id;
 
+	@NotNull @NotEmpty @Length(max = 22)
 	private String titulo;
 
+	@NotNull @NotEmpty
 	private String estudio;
 
+    @NotNull
 	private Plataforma plataforma;
 
+	@NotNull
 	private BigDecimal preco;
 
 	private LocalDateTime horaCriacao;
