@@ -51,7 +51,6 @@ public class Jogo {
 	}
 
 
-
 	public Long getId() {
 		return id;
 	}

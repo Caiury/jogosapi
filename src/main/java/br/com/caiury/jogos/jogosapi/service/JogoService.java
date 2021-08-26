@@ -15,12 +15,7 @@ public class JogoService {
 	@Autowired
 	JogoRepository jogoRepository;
 
-	public void cadastrar(JogoDto jogoDto) {
-		Jogo jogo = jogoDto.converter();
 
-		jogoRepository.save(jogo);
-
-	}
 
 	public List<JogoDto> listarTodos() {
 		List<Jogo> jogos = jogoRepository.findAll();
