@@ -62,18 +62,24 @@ public class JogoController {
 
 		return jogoService.listarPorId(id);
 	}
+	
 
 	@PutMapping("/{id}")
 	@Transactional
-	public void atualizar(@RequestBody @Valid JogoDto jogoDto, @PathVariable Long id) {
+	public ResponseEntity<?> atualizar(@RequestBody @Valid JogoDto jogoDto, @PathVariable Long id) {
 
 		jogoService.atualizar(jogoDto, id);
+		
+		return ResponseEntity.ok().build();
 	}
+	
 
 	@DeleteMapping("/{id}")
-	public void deletar(@PathVariable Long id) {
+	public ResponseEntity<?> deletar(@PathVariable Long id) {
 
 		jogoService.deletar(id);
+		
+		return ResponseEntity.ok().build();
 	}
 
 }

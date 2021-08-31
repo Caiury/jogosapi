@@ -15,18 +15,21 @@ public class JogoService {
 	@Autowired
 	JogoRepository jogoRepository;
 
-
-
 	public List<JogoDto> listarTodos() {
 		List<Jogo> jogos = jogoRepository.findAll();
 		return JogoDto.converterTodos(jogos);
 	}
+	
+	
+	
 
 	public JogoDto listarPorId(Long id) {
 		Jogo jogo = jogoRepository.getById(id);
 		return new JogoDto(jogo);
 	}
 
+	
+	
 	public void atualizar(JogoDto jogoDto, Long id) {
 
 		Jogo jogo = jogoRepository.getById(id);
@@ -39,9 +42,7 @@ public class JogoService {
 
 	public void deletar(Long id) {
 
-		Jogo jogo = jogoRepository.getById(id);
-
-		jogoRepository.delete(jogo);
+		jogoRepository.deleteById(id);
 
 	}
 
